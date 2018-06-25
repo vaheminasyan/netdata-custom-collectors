@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # esps_log.chart.py
+# Description: Netdata pythond module, which does monitor log files for specified patterns.
+# Author: Vahe Minasyan (vaheminasyan)
 
 import sys
 from re import search, match
