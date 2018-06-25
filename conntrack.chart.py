@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-# Description: example netdata python.d module
-# Author: Pawel Krupa (paulfantom)
+# Description: Netdata pythond module, which does monitor conntrack table usage percentage.
+# Author: Vahe Minasyan (vaheminasyan)
 
-from subprocess import Popen, PIPE, check_output
+from subprocess import check_output
 import re
 import sys
-import time
 
 from bases.FrameworkServices.SimpleService import SimpleService
 
@@ -13,7 +12,7 @@ from bases.FrameworkServices.SimpleService import SimpleService
 # default module values
 update_every = 1
 priority = 90000
-retries = 60
+retries = 99999999
 #
 ORDER = ['conntrack']
 CHARTS = {
@@ -52,7 +51,6 @@ class Service(SimpleService):
         metrics[keys[1]] = 100000000.0 * (float(re.search(r'([0-9]+)', c_count).group(1)))
 
         metrics[keys[2]] = 100000000.0 * ((float(metrics[keys[1]]) * 100.0) / float(metrics[keys[0]]))
-        sys.stderr.write('kannasun' + str(metrics) + '\n')
         return metrics
 
     def _get_data(self):
